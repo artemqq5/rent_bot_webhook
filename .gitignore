@@ -4,13 +4,12 @@ __pycache__/
 *$py.class
 
 config.py
-
-# C extensions
-*.so
-
 .DS_Store
 .idea/
 venv/
+
+# C extensions
+*.so
 
 # Distribution / packaging
 .Python

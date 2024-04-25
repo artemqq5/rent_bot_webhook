@@ -17,13 +17,13 @@ class DefaultDataBase:
             autocommit=True
         )
 
-    def _insert(self, query, args=None):
-        try:
-            with self.__connection as con:
-                with con.cursor() as cursor:
-                    return cursor.execute(query, args)
-        except Exception as e:
-            print(f"_insert: {e}")
+    # def _insert(self, query, args=None):
+    #     try:
+    #         with self.__connection as con:
+    #             with con.cursor() as cursor:
+    #                 return cursor.execute(query, args)
+    #     except Exception as e:
+    #         print(f"_insert: {e}")
 
     def _update(self, query, args=None):
         try:
@@ -33,14 +33,14 @@ class DefaultDataBase:
         except Exception as e:
             print(f"_update: {e}")
 
-    def _delete(self, query, args=None):
-        try:
-            with self.__connection as con:
-                with con.cursor() as cursor:
-                    return cursor.execute(query, args)
-        except Exception as e:
-            print(f"_delete: {e}")
-
+    # def _delete(self, query, args=None):
+    #     try:
+    #         with self.__connection as con:
+    #             with con.cursor() as cursor:
+    #                 return cursor.execute(query, args)
+    #     except Exception as e:
+    #         print(f"_delete: {e}")
+    #
     def _select_one(self, query, args=None):
         try:
             with self.__connection as con:
