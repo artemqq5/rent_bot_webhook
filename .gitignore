@@ -3,8 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+config.py
+
 # C extensions
 *.so
+
+.DS_Store
+.idea/
+venv/
 
 # Distribution / packaging
 .Python
