@@ -25,6 +25,6 @@ def web_handler():
 
 
 if __name__ == '__main__':
-    app.run()
-    # http_server = WSGIServer(("0.0.0.0", 5020), app)
-    # http_server.serve_forever()
+    # app.run()
+    http_server = WSGIServer(("0.0.0.0", 5020), app)
+    http_server.serve_forever()
