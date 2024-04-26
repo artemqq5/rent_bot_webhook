@@ -17,7 +17,7 @@
 #
 # # states for apps
 # DRAFT_APP_STATUS = "Draft"
-# ACTIVE_APP_STATUS = "Active"
+ACTIVE_APP_STATUS = "Active"
 BANNED_APP_STATUS = "Bunned"
 
 # APP_STATUS_LIST = (ACTIVE_APP_STATUS, BANNED_APP_STATUS)

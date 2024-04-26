@@ -10,14 +10,14 @@ app = Flask(__name__)
 
 @app.route("/flows", methods=['GET'])
 def web_handler():
-    id_ = request.args.get("flow_id")
-    application = AppRepository().get_app_by_id(id_)
+    bundle = request.args.get("bundle")
+    application = AppRepository().get_app_by_bundle(bundle)
 
     if not application:
-        return 'OK', 200
+        return 'OK', 201
 
-    if not AppRepository().ban_app_by_id(id_):
-        return 'OK', 200
+    if not AppRepository().ban_app_by_bundle(bundle):
+        return 'OK', 201
 
     NotificationUsers().ban_application_notify(application)
 
@@ -25,6 +25,6 @@ def web_handler():
 
 
 if __name__ == '__main__':
-    # app.run()
-    http_server = WSGIServer(("0.0.0.0", 5020), app)
-    http_server.serve_forever()
+    app.run()
+    # http_server = WSGIServer(("0.0.0.0", 5020), app)
+    # http_server.serve_forever()
