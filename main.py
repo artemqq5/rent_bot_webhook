@@ -2,6 +2,7 @@ from gevent.pywsgi import WSGIServer
 
 from flask import Flask, request
 
+from config import WEBHOOK_PASSWORD
 from data.repository.AppRepository import AppRepository
 from domain.notify.NotificationUsers import NotificationUsers
 
@@ -10,14 +11,19 @@ app = Flask(__name__)
 
 @app.route("/flows", methods=['GET'])
 def web_handler():
-    bundle = request.args.get("bundle")
+    bundle = request.args.get("bundle", None)
+    key = request.args.get("key", None)
+
+    if not bundle or not key or key != WEBHOOK_PASSWORD:
+        return "Error auth", 201
+
     application = AppRepository().get_app_by_bundle(bundle)
 
     if not application:
-        return 'OK', 201
+        return 'Error app', 201
 
     if not AppRepository().ban_app_by_bundle(bundle):
-        return 'OK', 201
+        return 'Error bun', 201
 
     NotificationUsers().ban_application_notify(application)
 
