@@ -20,10 +20,10 @@ def web_handler():
     application = AppRepository().get_app_by_bundle(bundle)
 
     if not application:
-        return 'Error app', 201
+        return 'Error app', 202
 
     if not AppRepository().ban_app_by_bundle(bundle):
-        return 'Error bun', 201
+        return 'Error bun', 203
 
     NotificationUsers().ban_application_notify(application)
 
