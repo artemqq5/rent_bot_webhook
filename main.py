@@ -1,7 +1,6 @@
 import requests
-from gevent.pywsgi import WSGIServer
-
 from flask import Flask, request
+from gevent.pywsgi import WSGIServer
 
 from config import WEBHOOK_PASSWORD
 from data.repository.AppRepository import AppRepository
@@ -36,7 +35,9 @@ def web_handler():
 
 
 def check_available_page(url) -> bool:
-    return requests.head(url).status_code == 200
+    response = requests.head(url).status_code
+    print(response)
+    return response == 200
 
 
 if __name__ == '__main__':
