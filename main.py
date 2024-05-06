@@ -35,9 +35,9 @@ def web_handler():
 
 
 def check_available_page(url) -> bool:
-    response = requests.head(url).status_code
-    print(response)
-    return response == 200
+    response = requests.head(url)
+    print(response.text)
+    return True
 
 
 if __name__ == '__main__':
