@@ -35,7 +35,7 @@ def web_handler():
 
 
 def check_available_page(url) -> bool:
-    response = requests.head("https://apps.apple.com/us/app/fortune-box-celestial-riches/id6480527802]").status_code
+    response = requests.head(url).status_code
     print(response)
     return str(response).startswith(("3", "2"))
 
